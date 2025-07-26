@@ -162,7 +162,7 @@
         }
         
         .skills-list li:before {
-            content: "•";
+            content: "â€¢";
             color: var(--accent);
             font-weight: bold;
             display: inline-block;
@@ -188,7 +188,7 @@
         }
         
         .element-tag:before {
-            content: "✓";
+            content: "âœ“";
             color: var(--success);
             margin-right: 5px;
         }
@@ -508,6 +508,55 @@
             display: none;
         }
         
+        /* Text-based activity styles */
+        .text-activity {
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .text-question {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .text-answer {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+        
+        .score-display {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 15px 0;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Call-to-action styles */
+        .cta-card {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .cta-card h3 {
+            color: white;
+        }
+        
+        .cta-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
         /* Responsive adjustments */
         @media (min-width: 768px) {
             body {
@@ -539,6 +588,11 @@
                 <div class="progress"></div>
             </div>
             <p>Course progress: 30%</p>
+            
+            <!-- New CTA Button -->
+            <a href="#live-teachers" class="btn btn-accent">
+                <i class="fas fa-chalkboard-teacher"></i> Book Live Lesson with Teacher
+            </a>
         </div>
         
         <!-- Lesson 1: Shopping Vocabulary -->
@@ -563,7 +617,7 @@
                 <div class="vocab-card">
                     <div class="vocab-header">
                         <span class="vocab-english">Receipt <button class="tts-btn" data-text="Receipt"><i class="fas fa-volume-up"></i></button></span>
-                        <span class="vocab-french">Reçu</span>
+                        <span class="vocab-french">ReÃ§u</span>
                     </div>
                     <div class="vocab-icon">
                         <i class="fas fa-receipt"></i>
@@ -602,13 +656,53 @@
                 <div class="vocab-card">
                     <div class="vocab-header">
                         <span class="vocab-english">Exchange <button class="tts-btn" data-text="Exchange"><i class="fas fa-volume-up"></i></button></span>
-                        <span class="vocab-french">Échanger</span>
+                        <span class="vocab-french">Ã‰changer</span>
                     </div>
                     <div class="vocab-icon">
                         <i class="fas fa-exchange-alt"></i>
                     </div>
                     <div class="vocab-example">
                         "I'd like to exchange this shirt for a larger size."
+                    </div>
+                </div>
+                
+                <!-- New Vocabulary Cards -->
+                <div class="vocab-card">
+                    <div class="vocab-header">
+                        <span class="vocab-english">Discount <button class="tts-btn" data-text="Discount"><i class="fas fa-volume-up"></i></button></span>
+                        <span class="vocab-french">RÃ©duction</span>
+                    </div>
+                    <div class="vocab-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <div class="vocab-example">
+                        "Do you have any student discounts available?"
+                    </div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-header">
+                        <span class="vocab-english">Checkout <button class="tts-btn" data-text="Checkout"><i class="fas fa-volume-up"></i></button></span>
+                        <span class="vocab-french">Caisse</span>
+                    </div>
+                    <div class="vocab-icon">
+                        <i class="fas fa-cash-register"></i>
+                    </div>
+                    <div class="vocab-example">
+                        "The checkout is at the front of the store."
+                    </div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-header">
+                        <span class="vocab-english">Out of stock <button class="tts-btn" data-text="Out of stock"><i class="fas fa-volume-up"></i></button></span>
+                        <span class="vocab-french">En rupture de stock</span>
+                    </div>
+                    <div class="vocab-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <div class="vocab-example">
+                        "I'm sorry, this item is currently out of stock."
                     </div>
                 </div>
             </div>
@@ -621,16 +715,45 @@
                 <div class="fill-blank">
                     <p>Customer: "I'd like to <span class="blank" id="blank1">______</span> this shirt. It's too small."</p>
                     <p>Assistant: "Do you have the <span class="blank" id="blank2">______</span>?"</p>
+                    <p>Customer: "Yes, here it is. Would it be possible to <span class="blank" id="blank3">______</span> it for a larger size?"</p>
                     
                     <div class="drag-drop-container">
                         <div class="drag-item" draggable="true" data-target="blank1">return</div>
                         <div class="drag-item" draggable="true" data-target="blank1">exchange</div>
                         <div class="drag-item" draggable="true" data-target="blank2">receipt</div>
                         <div class="drag-item" draggable="true" data-target="blank2">refund</div>
+                        <div class="drag-item" draggable="true" data-target="blank3">exchange</div>
+                        <div class="drag-item" draggable="true" data-target="blank3">return</div>
                     </div>
                     
                     <button class="btn btn-accent" id="checkBlank">Check Answers</button>
                     <div class="feedback" id="blankFeedback"></div>
+                </div>
+            </div>
+            
+            <!-- New Text-based Activity -->
+            <div class="exercise">
+                <h3><i class="fas fa-keyboard"></i> Writing Practice</h3>
+                <p>Complete these shopping-related sentences:</p>
+                
+                <div class="text-activity">
+                    <div class="text-question">
+                        <p>1. If your clothes don't fit, you can ask for a ______ or ______.</p>
+                        <input type="text" class="text-answer" id="answer1" placeholder="Type your answer here...">
+                    </div>
+                    
+                    <div class="text-question">
+                        <p>2. "Excuse me, where can I find the ______ to try on these pants?"</p>
+                        <input type="text" class="text-answer" id="answer2" placeholder="Type your answer here...">
+                    </div>
+                    
+                    <div class="text-question">
+                        <p>3. Write a polite request to ask for a discount:</p>
+                        <input type="text" class="text-answer" id="answer3" placeholder="Type your answer here...">
+                    </div>
+                    
+                    <button class="btn btn-accent" id="checkTextAnswers">Check Answers</button>
+                    <div class="score-display hidden" id="textScore"></div>
                 </div>
             </div>
         </div>
@@ -721,6 +844,35 @@
                 </div>
                 
                 <p><small>After recording, compare with the native speaker examples.</small></p>
+            </div>
+            
+            <!-- New CTA Card -->
+            <div class="cta-card" id="live-teachers">
+                <div class="cta-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Get Personalized Feedback</h3>
+                <p>Our certified teachers will help you perfect your pronunciation and grammar.</p>
+                <a href="http://wa.me/213795369006" class="btn" style="background-color: white; color: var(--primary);">
+                    <i class="fas fa-calendar-check"></i> Book Live Lesson
+                </a>
+            </div>
+        </div>
+        
+        <!-- Additional CTA Section -->
+        <div class="card">
+            <div class="teacher-section">
+                <div class="teacher-avatar">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="lesson-content">
+                    <h3>Meet Your Teachers</h3>
+                    <p>Learn with certified English teachers in 1-on-1 or group lessons.</p>
+                    <img src="https://images.unsplash.com/photo-1580894732444-8ecded7900cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Teacher with student" class="scenario-img">
+                    <a href="http://wa.me/213795369006" class="btn btn-accent">
+                        <i class="fas fa-comment-dots"></i> Chat with Our Team
+                    </a>
+                </div>
             </div>
         </div>
         
@@ -862,14 +1014,17 @@
             document.getElementById('checkBlank').addEventListener('click', function() {
                 const blank1 = document.getElementById('blank1').textContent;
                 const blank2 = document.getElementById('blank2').textContent;
+                const blank3 = document.getElementById('blank3').textContent;
                 const feedback = document.getElementById('blankFeedback');
                 
-                if ((blank1 === 'return' || blank1 === 'exchange') && blank2 === 'receipt') {
-                    feedback.textContent = 'Correct! Well done.';
+                if ((blank1 === 'return' || blank1 === 'exchange') && 
+                    blank2 === 'receipt' && 
+                    blank3 === 'exchange') {
+                    feedback.textContent = 'Excellent! All answers are correct.';
                     feedback.style.backgroundColor = '#d4edda';
                     feedback.style.display = 'block';
                 } else {
-                    feedback.textContent = 'Not quite right. Try again!';
+                    feedback.textContent = 'Some answers need correction. Try again!';
                     feedback.style.backgroundColor = '#f8d7da';
                     feedback.style.display = 'block';
                 }
@@ -909,6 +1064,50 @@
                 }
                 
                 grammarFeedback.style.display = 'block';
+            });
+            
+            // Text-based activity scoring
+            document.getElementById('checkTextAnswers').addEventListener('click', function() {
+                const answer1 = document.getElementById('answer1').value.toLowerCase();
+                const answer2 = document.getElementById('answer2').value.toLowerCase();
+                const answer3 = document.getElementById('answer3').value.toLowerCase();
+                const scoreDisplay = document.getElementById('textScore');
+                
+                let score = 0;
+                let feedback = '';
+                
+                // Check answer 1
+                if (answer1.includes('return') && answer1.includes('exchange') || 
+                    answer1.includes('refund') && answer1.includes('exchange')) {
+                    score++;
+                } else {
+                    feedback += '1. Possible answers: "return or exchange" or "refund or exchange"<br>';
+                }
+                
+                // Check answer 2
+                if (answer2.includes('fitting room') || answer2.includes('changing room')) {
+                    score++;
+                } else {
+                    feedback += '2. Correct answer: "fitting room" or "changing room"<br>';
+                }
+                
+                // Check answer 3
+                if (answer3.includes('could') || answer3.includes('would') || answer3.includes('please')) {
+                    score++;
+                } else {
+                    feedback += '3. Your answer should include polite words like "could", "would", or "please"<br>';
+                }
+                
+                // Display score
+                scoreDisplay.innerHTML = `Your score: ${score}/3<br>${feedback}`;
+                scoreDisplay.style.display = 'block';
+                scoreDisplay.classList.remove('hidden');
+                
+                if (score === 3) {
+                    scoreDisplay.style.color = 'var(--success)';
+                } else {
+                    scoreDisplay.style.color = 'var(--warning)';
+                }
             });
             
             // Simulate progress update
