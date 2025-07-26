@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IRIS Academy - English Speaking (B1)</title>
+    <style>
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --success: #4cc9f0;
+            --warning: #f72585;
+        }
+        
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+            max-width: 100%;
+            overflow-x: hidden;
+            padding-bottom: 70px;
+        }
+        
+        .app-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 1.4rem;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            text-decoration: none;
+        }
+        
+        .container {
+            padding: 15px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        h1 {
+            font-size: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 1.3rem;
+            margin-top: 20px;
+        }
+        
+        h3 {
+            font-size: 1.1rem;
+            color: var(--secondary);
+        }
+        
+        h4 {
+            font-size: 1rem;
+            color: var(--accent);
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            text-align: center;
+            margin: 5px 0;
+            border: none;
+            font-size: 1rem;
+            width: 100%;
+            cursor: pointer;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+        }
+        
+        .activity {
+            border-left: 3px solid var(--accent);
+            padding-left: 15px;
+            margin: 15px 0;
+        }
+        
+        .situation {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .skills-list {
+            list-style-type: none;
+            margin: 10px 0;
+        }
+        
+        .skills-list li {
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .skills-list li:before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .interactive-elements {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .element-tag {
+            background-color: var(--light);
+            border: 1px solid #ddd;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .element-tag:before {
+            content: "✓";
+            color: var(--success);
+            margin-right: 5px;
+        }
+        
+        .tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .tab {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #666;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        
+        .tab.active {
+            color: var(--primary);
+        }
+        
+        .tab i {
+            font-size: 1.2rem;
+            margin-bottom: 3px;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--success);
+            width: 30%;
+        }
+        
+        .avatar {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px auto;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+        
+        .dialogue {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .message {
+            margin-bottom: 10px;
+            padding: 8px 12px;
+            border-radius: 15px;
+            max-width: 80%;
+            position: relative;
+        }
+        
+        .received {
+            background-color: #e9ecef;
+            align-self: flex-start;
+            border-bottom-left-radius: 5px;
+        }
+        
+        .sent {
+            background-color: var(--primary);
+            color: white;
+            align-self: flex-end;
+            border-bottom-right-radius: 5px;
+            margin-left: auto;
+        }
+        
+        .voice-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: var(--light);
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        
+        .voice-btn i {
+            color: var(--primary);
+        }
+        
+        .flag {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            vertical-align: middle;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .scenario-img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .tts-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 1rem;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+        
+        /* Lesson Board Styles */
+        .lesson-board {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            position: relative;
+            border: 1px solid #dee2e6;
+        }
+        
+        .teacher-section {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .teacher-avatar {
+            width: 80px;
+            height: 80px;
+            background-color: #e2e3e5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+        
+        .lesson-content {
+            flex-grow: 1;
+        }
+        
+        .board-img {
+            width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+            height: auto;
+            max-height: 200px;
+            object-fit: contain;
+        }
+        
+        /* Vocabulary Cards */
+        .vocab-card {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 10px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .vocab-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .vocab-english {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+        
+        .vocab-french {
+            font-style: italic;
+            color: var(--secondary);
+        }
+        
+        .vocab-icon {
+            font-size: 2.5rem;
+            text-align: center;
+            margin: 15px 0;
+            color: var(--accent);
+        }
+        
+        .vocab-example {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px dashed #ddd;
+        }
+        
+        /* Grammar Lesson Styles */
+        .grammar-point {
+            background-color: #f0f8ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .grammar-example {
+            font-style: italic;
+            padding: 10px;
+            background-color: white;
+            border-left: 3px solid var(--accent);
+            margin: 10px 0;
+        }
+        
+        /* Interactive Exercise Styles */
+        .exercise {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .fill-blank {
+            margin: 15px 0;
+        }
+        
+        .blank {
+            border-bottom: 2px solid var(--primary);
+            padding: 0 5px;
+            min-width: 80px;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .drag-drop-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 15px 0;
+        }
+        
+        .drag-item {
+            background-color: var(--light);
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: grab;
+        }
+        
+        .drop-area {
+            min-height: 50px;
+            border: 2px dashed #aaa;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        
+        .multiple-choice {
+            margin: 15px 0;
+        }
+        
+        .choice {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .choice:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        
+        .feedback {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        /* Responsive adjustments */
+        @media (min-width: 768px) {
+            body {
+                max-width: 500px;
+                margin: 0 auto;
+                border-left: 1px solid #ddd;
+                border-right: 1px solid #ddd;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="app-header">
+        <div class="logo">IRIS Academy</div>
+        <a href="http://wa.me/213795369006" class="whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Help
+        </a>
+    </header>
+    
+    <div class="container">
+        <div class="card">
+            <h1>Daily English - Shopping & Grammar (B1)</h1>
+            <p>Master clothing store conversations and key grammar points.</p>
+            
+            <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Shopping scenario" class="scenario-img">
+            
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
+            <p>Course progress: 30%</p>
+        </div>
+        
+        <!-- Lesson 1: Shopping Vocabulary -->
+        <div class="card">
+            <div class="lesson-board">
+                <div class="teacher-section">
+                    <div class="teacher-avatar">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="lesson-content">
+                        <h3>Lesson 1: Shopping Vocabulary</h3>
+                        <p>Essential words and phrases for clothing stores.</p>
+                        <button class="tts-btn" data-text="Welcome to our shopping vocabulary lesson. Today we'll learn essential words and phrases for clothing stores.">
+                            <i class="fas fa-volume-up"></i> Play Introduction
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Vocabulary Cards with Icons -->
+                <h4>Key Vocabulary:</h4>
+                
+                <div class="vocab-card">
+                    <div class="vocab-header">
+                        <span class="vocab-english">Receipt <button class="tts-btn" data-text="Receipt"><i class="fas fa-volume-up"></i></button></span>
+                        <span class="vocab-french">Reçu</span>
+                    </div>
+                    <div class="vocab-icon">
+                        <i class="fas fa-receipt"></i>
+                    </div>
+                    <div class="vocab-example">
+                        "Always keep your receipt in case you need to return something."
+                    </div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-header">
+                        <span class="vocab-english">Refund <button class="tts-btn" data-text="Refund"><i class="fas fa-volume-up"></i></button></span>
+                        <span class="vocab-french">Remboursement</span>
+                    </div>
+                    <div class="vocab-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <div class="vocab-example">
+                        "The store gave me a full refund when the shoes didn't fit."
+                    </div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-header">
+                        <span class="vocab-english">Fitting Room <button class="tts-btn" data-text="Fitting room"><i class="fas fa-volume-up"></i></button></span>
+                        <span class="vocab-french">Cabine d'essayage</span>
+                    </div>
+                    <div class="vocab-icon">
+                        <i class="fas fa-tshirt"></i>
+                    </div>
+                    <div class="vocab-example">
+                        "You can try on the jeans in the fitting room over there."
+                    </div>
+                </div>
+                
+                <div class="vocab-card">
+                    <div class="vocab-header">
+                        <span class="vocab-english">Exchange <button class="tts-btn" data-text="Exchange"><i class="fas fa-volume-up"></i></button></span>
+                        <span class="vocab-french">Échanger</span>
+                    </div>
+                    <div class="vocab-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="vocab-example">
+                        "I'd like to exchange this shirt for a larger size."
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Shopping Practice Exercises -->
+            <div class="exercise">
+                <h3>Practice: Complete the Dialogue</h3>
+                <p>Drag words to complete the shopping conversation:</p>
+                
+                <div class="fill-blank">
+                    <p>Customer: "I'd like to <span class="blank" id="blank1">______</span> this shirt. It's too small."</p>
+                    <p>Assistant: "Do you have the <span class="blank" id="blank2">______</span>?"</p>
+                    
+                    <div class="drag-drop-container">
+                        <div class="drag-item" draggable="true" data-target="blank1">return</div>
+                        <div class="drag-item" draggable="true" data-target="blank1">exchange</div>
+                        <div class="drag-item" draggable="true" data-target="blank2">receipt</div>
+                        <div class="drag-item" draggable="true" data-target="blank2">refund</div>
+                    </div>
+                    
+                    <button class="btn btn-accent" id="checkBlank">Check Answers</button>
+                    <div class="feedback" id="blankFeedback"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Lesson 2: Grammar Point -->
+        <div class="card">
+            <div class="lesson-board">
+                <div class="teacher-section">
+                    <div class="teacher-avatar">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="lesson-content">
+                        <h3>Lesson 2: Grammar - Polite Requests</h3>
+                        <p>Learn how to make polite requests in English.</p>
+                        <button class="tts-btn" data-text="Now let's learn about making polite requests in English. This is very important when shopping or asking for help.">
+                            <i class="fas fa-volume-up"></i> Play Introduction
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grammar-point">
+                    <h4>Using "Could I..." and "Would it be possible..."</h4>
+                    <p>In English, we often use modal verbs to make polite requests:</p>
+                    
+                    <div class="grammar-example">
+                        "Could I try this on in a larger size?"<br>
+                        <button class="tts-btn" data-text="Could I try this on in a larger size?"><i class="fas fa-volume-up"></i></button>
+                    </div>
+                    
+                    <div class="grammar-example">
+                        "Would it be possible to get a refund?"<br>
+                        <button class="tts-btn" data-text="Would it be possible to get a refund?"><i class="fas fa-volume-up"></i></button>
+                    </div>
+                    
+                    <p>These are more polite than saying "I want..." or "Give me..."</p>
+                </div>
+                
+                <div class="grammar-point">
+                    <h4>Adding "please" at the end</h4>
+                    <p>Always remember to say "please" when making requests:</p>
+                    
+                    <div class="grammar-example">
+                        "Could you check the price, please?"<br>
+                        <button class="tts-btn" data-text="Could you check the price, please?"><i class="fas fa-volume-up"></i></button>
+                    </div>
+                    
+                    <div class="grammar-example">
+                        "I'd like to return this, please."<br>
+                        <button class="tts-btn" data-text="I'd like to return this, please."><i class="fas fa-volume-up"></i></button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grammar Practice Exercises -->
+            <div class="exercise">
+                <h3>Practice: Make It Polite</h3>
+                <p>Choose the most polite version of each request:</p>
+                
+                <div class="multiple-choice">
+                    <h4>1. You want to try on a jacket:</h4>
+                    <div class="choice" data-correct="false">"I want to try this jacket."</div>
+                    <div class="choice" data-correct="true">"Could I try this jacket on, please?"</div>
+                    <div class="choice" data-correct="false">"Give me that jacket to try."</div>
+                </div>
+                
+                <div class="multiple-choice">
+                    <h4>2. You need a different size:</h4>
+                    <div class="choice" data-correct="false">"This is too small."</div>
+                    <div class="choice" data-correct="true">"Would it be possible to get this in a larger size?"</div>
+                    <div class="choice" data-correct="false">"I need a bigger one."</div>
+                </div>
+                
+                <div class="feedback" id="grammarFeedback"></div>
+                
+                <button class="btn btn-accent" id="checkGrammar">Check Answers</button>
+            </div>
+            
+            <div class="exercise">
+                <h3>Speaking Practice</h3>
+                <p>Record yourself saying these polite requests:</p>
+                
+                <div class="voice-btn" id="recordRequest1">
+                    <i class="fas fa-microphone"></i> "Could I see this in blue, please?"
+                </div>
+                
+                <div class="voice-btn" id="recordRequest2">
+                    <i class="fas fa-microphone"></i> "Would it be possible to get a discount?"
+                </div>
+                
+                <p><small>After recording, compare with the native speaker examples.</small></p>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2><i class="fas fa-question-circle"></i> Need Help?</h2>
+            <p>Get personalized feedback from our teachers:</p>
+            <a href="http://wa.me/213795369006" class="btn" style="background-color: #25D366;">
+                <i class="fab fa-whatsapp"></i> Message on WhatsApp
+            </a>
+            <p><small>Send your recordings for pronunciation feedback and corrections.</small></p>
+        </div>
+    </div>
+    
+    <div class="tab-bar">
+        <a href="#" class="tab active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="tab">
+            <i class="fas fa-book"></i>
+            <span>Lessons</span>
+        </a>
+        <a href="#" class="tab">
+            <i class="fas fa-chart-line"></i>
+            <span>Progress</span>
+        </a>
+        <a href="#" class="tab">
+            <i class="fas fa-cog"></i>
+            <span>Settings</span>
+        </a>
+    </div>
+    
+    <script>
+        // Text-to-Speech functionality with British voice
+        function speak(text) {
+            if ('speechSynthesis' in window) {
+                // Cancel any current speech
+                window.speechSynthesis.cancel();
+                
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'en-GB';
+                utterance.rate = 1.0;
+                utterance.pitch = 1.0;
+                
+                // Try to set a female British voice
+                const voices = speechSynthesis.getVoices();
+                const britishFemaleVoice = voices.find(voice => 
+                    voice.lang === 'en-GB' && voice.name.includes('Female'));
+                
+                if (britishFemaleVoice) {
+                    utterance.voice = britishFemaleVoice;
+                } else {
+                    // Fallback to any available female voice
+                    const femaleVoice = voices.find(voice => 
+                        voice.lang.includes('en-') && voice.name.includes('Female'));
+                    if (femaleVoice) utterance.voice = femaleVoice;
+                }
+                
+                speechSynthesis.speak(utterance);
+            } else {
+                alert("Text-to-speech not supported in your browser");
+            }
+        }
+        
+        // Initialize voices when they become available
+        if (speechSynthesis.onvoiceschanged !== undefined) {
+            speechSynthesis.onvoiceschanged = function() {
+                // Voices loaded
+            };
+        }
+        
+        // Set up TTS buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load voices immediately if available
+            const voices = speechSynthesis.getVoices();
+            if (voices.length > 0) {
+                console.log("Voices loaded:", voices);
+            }
+            
+            const ttsButtons = document.querySelectorAll('.tts-btn');
+            ttsButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const text = this.getAttribute('data-text');
+                    speak(text);
+                });
+            });
+            
+            // Voice recording buttons
+            function setupRecordButton(buttonId, exampleText) {
+                const btn = document.getElementById(buttonId);
+                if (btn) {
+                    btn.addEventListener('click', function() {
+                        this.innerHTML = `<i class="fas fa-microphone-alt"></i> Recording... (3 seconds)`;
+                        this.style.backgroundColor = '#ffecec';
+                        this.style.borderColor = 'var(--warning)';
+                        
+                        setTimeout(() => {
+                            this.innerHTML = `<i class="fas fa-check-circle"></i> Recording complete!`;
+                            this.style.backgroundColor = '#e6f7e6';
+                            this.style.borderColor = 'var(--success)';
+                            
+                            // Play example response
+                            setTimeout(() => {
+                                speak(`Here's an example: ${exampleText}`);
+                            }, 1000);
+                        }, 3000);
+                    });
+                }
+            }
+            
+            setupRecordButton('recordRequest1', "Could I see this in blue, please?");
+            setupRecordButton('recordRequest2', "Would it be possible to get a discount?");
+            
+            // Drag and drop functionality for fill-in-the-blank
+            const dragItems = document.querySelectorAll('.drag-item');
+            dragItems.forEach(item => {
+                item.addEventListener('dragstart', function(e) {
+                    e.dataTransfer.setData('text/plain', this.dataset.target);
+                    e.dataTransfer.setData('text', this.textContent);
+                });
+            });
+            
+            const blanks = document.querySelectorAll('.blank');
+            blanks.forEach(blank => {
+                blank.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+                
+                blank.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    const targetBlank = e.dataTransfer.getData('text/plain');
+                    if (targetBlank === this.id) {
+                        this.textContent = e.dataTransfer.getData('text');
+                    }
+                });
+            });
+            
+            // Check answers button for vocabulary
+            document.getElementById('checkBlank').addEventListener('click', function() {
+                const blank1 = document.getElementById('blank1').textContent;
+                const blank2 = document.getElementById('blank2').textContent;
+                const feedback = document.getElementById('blankFeedback');
+                
+                if ((blank1 === 'return' || blank1 === 'exchange') && blank2 === 'receipt') {
+                    feedback.textContent = 'Correct! Well done.';
+                    feedback.style.backgroundColor = '#d4edda';
+                    feedback.style.display = 'block';
+                } else {
+                    feedback.textContent = 'Not quite right. Try again!';
+                    feedback.style.backgroundColor = '#f8d7da';
+                    feedback.style.display = 'block';
+                }
+            });
+            
+            // Multiple choice functionality for grammar
+            const choices = document.querySelectorAll('.choice');
+            const grammarFeedback = document.getElementById('grammarFeedback');
+            
+            choices.forEach(choice => {
+                choice.addEventListener('click', function() {
+                    // Remove any existing selections from this question group
+                    const questionGroup = this.parentElement;
+                    questionGroup.querySelectorAll('.choice').forEach(c => {
+                        c.classList.remove('correct', 'incorrect');
+                    });
+                    
+                    if (this.dataset.correct === 'true') {
+                        this.classList.add('correct');
+                    } else {
+                        this.classList.add('incorrect');
+                    }
+                });
+            });
+            
+            // Check grammar answers button
+            document.getElementById('checkGrammar').addEventListener('click', function() {
+                const correctAnswers = document.querySelectorAll('.choice[data-correct="true"].correct');
+                const totalQuestions = document.querySelectorAll('.multiple-choice').length;
+                
+                if (correctAnswers.length === totalQuestions) {
+                    grammarFeedback.textContent = 'Excellent! You understand polite requests well.';
+                    grammarFeedback.style.backgroundColor = '#d4edda';
+                } else {
+                    grammarFeedback.textContent = 'Good try! Remember to use "Could I..." or "Would it be possible..." for polite requests.';
+                    grammarFeedback.style.backgroundColor = '#f8d7da';
+                }
+                
+                grammarFeedback.style.display = 'block';
+            });
+            
+            // Simulate progress update
+            setTimeout(() => {
+                document.querySelector('.progress').style.width = '45%';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
